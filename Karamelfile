@@ -1,0 +1,10 @@
+dependencies:
+  - recipe: elastic::install
+    global:  
+      - kagent::install
+  - recipe: elastic::default
+    global:  
+      - kagent::default
+
+
+

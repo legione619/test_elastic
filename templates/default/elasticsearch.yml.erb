@@ -323,7 +323,6 @@ http.cors.allow-origin : "*"
 # 2. Configure an initial list of master nodes in the cluster
 #    to perform discovery when new nodes (master or data) are started:
 #
-#discovery.zen.ping.unicast.hosts: [<%= node['Elastic_cluster']['port'] %>]
 
 discovery.zen.minimum_master_nodes: 2
 discovery.zen.ping.multicast.enabled: true

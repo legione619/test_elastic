@@ -19,7 +19,7 @@ depends "sysctl"
   supports os
 end
 attribute "elastic/clusternodes",
-          :description =>  "List of cluster node ip",
+          :description =>  "List of comma separated cluster node ip",
           :type => 'string'
 
 attribute "elastic/port",

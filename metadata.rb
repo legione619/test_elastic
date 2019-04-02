@@ -18,7 +18,7 @@ depends "sysctl"
 %w{ ubuntu debian rhel centos }.each do |os|
   supports os
 end
-attribute "elastic/clusternodes"
+attribute "elastic/clusternodes",
           :description =>  "List of cluster node ip",
           :type => 'string'
 

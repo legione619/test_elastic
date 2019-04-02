@@ -18,7 +18,7 @@
 # Any element in the configuration can be replaced with environment variables
 # by placing them in ${...} notation. For example:
 #
-#node.rack: ${RACK_ENV_VAR}
+node.rack: ${RACK_ENV_VAR}
 
 # For information on supported formats and syntax for the config file, see
 # <http://elasticsearch.org/guide/en/elasticsearch/reference/current/setup-configuration.html>
@@ -82,7 +82,6 @@ node.data: true
 # for customized shard allocation filtering, or allocation awareness. An attribute
 # is a simple key value pair, similar to node['key']: value, here is an example:
 #
-node.rack: rack314
 
 # By default, multiple nodes are allowed to start from the same installation location
 # to disable it, set the following:
@@ -302,13 +301,13 @@ http.cors.allow-origin : "*"
 # operational within the cluster. This should be set to a quorum/majority of
 # the master-eligible nodes in the cluster.
 #
-discovery.zen.minimum_master_nodes: 1
+#discovery.zen.minimum_master_nodes: 1
 
 # Set the time to wait for ping responses from other nodes when discovering.
 # Set this option to a higher value on a slow or congested network
 # to minimize discovery failures:
 #
-discovery.zen.ping.timeout: 3s
+#discovery.zen.ping.timeout: 3s
 
 # For more information, see
 # <http://elasticsearch.org/guide/en/elasticsearch/reference/current/modules-discovery-zen.html>
@@ -324,29 +323,11 @@ discovery.zen.ping.timeout: 3s
 # 2. Configure an initial list of master nodes in the cluster
 #    to perform discovery when new nodes (master or data) are started:
 #
-#discovery.zen.ping.unicast.hosts: ["host1", "host2:port"
+#discovery.zen.ping.unicast.hosts: [<%= node['Elastic_cluster']['port'] %>]
 
-# EC2 discovery allows to use AWS EC2 API in order to perform discovery.
-#
-# You have to install the cloud-aws plugin for enabling the EC2 discovery.
-#
-# For more information, see
-# <http://elasticsearch.org/guide/en/elasticsearch/reference/current/modules-discovery-ec2.html>
-#
-# See <http://elasticsearch.org/tutorials/elasticsearch-on-ec2/>
-# for a step-by-step tutorial.
+discovery.zen.minimum_master_nodes: 2
+discovery.zen.ping.multicast.enabled: true
 
-# GCE discovery allows to use Google Compute Engine API in order to perform discovery.
-#
-# You have to install the cloud-gce plugin for enabling the GCE discovery.
-#
-# For more information, see <https://github.com/elasticsearch/elasticsearch-cloud-gce>.
-
-# Azure discovery allows to use Azure API in order to perform discovery.
-#
-# You have to install the cloud-azure plugin for enabling the Azure discovery.
-#
-# For more information, see <https://github.com/elasticsearch/elasticsearch-cloud-azure>.
 
 ################################## Slow Log ##################################
 
